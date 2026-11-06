@@ -1,0 +1,22 @@
+Part 1 (exact Kemeny constants of barbells B(a,l), n = 2a + l - 1)
+  a=2 l=1 n= 4  K = 19/6           = 3.1666666667  spectral 3.1666666667  resistance 3.1666666667
+  a=3 l=2 n= 7  K = 293/24         = 12.2083333333  spectral 12.2083333333  resistance 12.2083333333
+  a=3 l=3 n= 8  K = 35/2           = 17.5000000000  spectral 17.5000000000  resistance 17.5000000000
+  a=4 l=3 n=10  K = 883/30         = 29.4333333333  spectral 29.4333333333  resistance 29.4333333333
+  a=5 l=5 n=14  K = 3597/50        = 71.9400000000  spectral 71.9400000000  resistance 71.9400000000
+  a=6 l=7 n=18  K = 31363/222      = 141.2747747748  spectral 141.2747747748  resistance 141.2747747748
+
+Part 2 (balanced barbells a = floor(n/3), l = n - 2a + 1; lower bound L_n = [3a(a-1)l + l^2 + 2]/6)
+  n=  6 a=  2 l=  3  L_n/n^3=0.022377  tau_2/n^3=0.024241  K/n^3=0.039352  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  n=  9 a=  3 l=  4  L_n/n^3=0.020576  tau_2/n^3=0.022213  K/n^3=0.032282  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  n= 30 a= 10 l= 11  L_n/n^3=0.019093  tau_2/n^3=0.019387  K/n^3=0.021426  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  n= 90 a= 30 l= 31  L_n/n^3=0.018718  tau_2/n^3=0.018757  K/n^3=0.019266  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  n=300 a=100 l=101  L_n/n^3=0.018580  tau_2/n^3=0.018583  K/n^3=0.018716  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  n=600 a=200 l=201  L_n/n^3=0.018549  tau_2/n^3=0.018550  K/n^3=0.018614  L_n<=tau_2: True  (n-2)(n-5)(n+3)/54<=L_n: True
+  1/54 = 0.018519
+
+Part 3 (the inequalities of Section 3 on random connected graphs)
+  graphs tested: 400 {'cliques+paths': 114, 'gnp': 61, 'lollipop+noise': 114, 'tree': 111}
+  thresholds per graph: D = 2, 3, sqrt(n), n/4, n/2
+  all inequalities hold: True  (failures: [])
+  largest K / (n^3/54 + (37/8) n^(5/2)) seen: 0.0196

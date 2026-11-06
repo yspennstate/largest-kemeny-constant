@@ -1,0 +1,307 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\tr}{tr}
+
+\hypersetup{pdftitle={The largest Kemeny constant and the largest relaxation time of a graph},pdfauthor={Yitzchak Shmalo}}
+
+\title[The largest Kemeny constant of a graph]{The largest Kemeny constant and the largest relaxation time of a graph}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{6 November 2026}
+\subjclass[2020]{60J10, 05C81, 05C50, 05C35}
+\keywords{random walk on a graph, Kemeny's constant, relaxation time, spectral gap, effective resistance, barbell graph}
+
+\begin{document}
+\begin{abstract}
+For the simple random walk on a connected graph with $n$ vertices, let $\tau_0$ be Kemeny's constant and $\tau_2$ the relaxation time. Aldous and Fill conjectured that the maxima of both quantities over all connected $n$-vertex graphs are asymptotic to $n^3/54$. We prove this. Every connected graph on $n$ vertices satisfies $\tau_2\le\tau_0\le n^3/54+\tfrac{37}{8}n^{5/2}$, and the barbell made of two cliques on about $n/3$ vertices joined by a path on about $n/3$ vertices has $\tau_2\ge(n-2)(n-5)(n+3)/54$. The upper bound comes from the electrical formula for Kemeny's constant: the vertices near high-degree vertices are grouped into components of small total diameter, the rest of the graph is compared with a tree, and each edge of the tree is shown to contribute at most $s^2/8$ plus a lower-order term, where $s$ is the number of grouped vertices.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $G=(V,E)$ be a finite connected simple graph with $n\ge2$ vertices, degrees $d_v$, and total degree $W=\sum_v d_v=2|E|$. The simple random walk on $G$ has transition matrix $P(u,v)=1/d_u$ for $uv\in E$ and stationary distribution $\pi_v=d_v/W$. We run it in continuous time with generator $P-I$, so that it jumps at rate one; expected hitting times are the same as for the discrete-time walk. Let $T_v$ be the hitting time of $v$, with $T_v=0$ for a walk started at $v$, and let
+\[
+0=\mu_1<\mu_2\le\dots\le\mu_n
+\]
+be the eigenvalues of $I-P$. Following Aldous and Fill~\cite{AF}, put
+\[
+\tau_0=\sum_{v\in V}\pi_v E_u[T_v],\qquad \tau_2=\frac1{\mu_2}.
+\]
+The sum $\tau_0$ does not depend on $u$; it is Kemeny's constant of the walk~\cite{KS}. The relaxation time $\tau_2$ is the inverse spectral gap. Some authors define Kemeny's constant with an extra term $1$, or for the lazy walk $(I+P)/2$, which doubles both $\tau_0$ and $\tau_2$; the constant $1/54$ below refers to the normalisation just given.
+
+Among the extremal questions collected by Aldous and Fill, the largest hitting time and the largest cover time of an $n$-vertex graph are of order $n^3$, with constant $4/27$, attained asymptotically by lollipop graphs (Brightwell and Winkler~\cite{BW}; Feige~\cite{Fe}). For $\tau_0$ and $\tau_2$ the natural candidates are barbells: two cliques joined by a long path. Aldous and Fill~\cite[Open Problem~6.13]{AF} conjecture that
+\[
+\max_G\tau_0(G)\sim\frac{n^3}{54}\quad\text{and}\quad\max_G\tau_2(G)\sim\frac{n^3}{54},
+\]
+the maxima being over connected graphs with $n$ vertices. Breen, Butler, Day, DeArmond, Lorenzen, Qian and Riesen~\cite{BBD} computed Kemeny's constant of barbell-type graphs and showed that it is of order $n^3$, the largest possible order. Faught, Kempton and Knudson~\cite{FKK} obtained Kemeny's constant of a barbell from a formula for graphs with a cut vertex and showed that the best barbell has cliques on about $n/3$ vertices each and Kemeny's constant $n^3/54+O(n^2)$; they note that barbells are believed, on the basis of computation, to maximise Kemeny's constant. The matching upper bound is the content of the present paper.
+
+\begin{theorem}\label{thm:main}
+Let $G$ be a connected simple graph on $n\ge2$ vertices. Then
+\begin{equation}\label{eq:upper}
+\tau_2(G)\le\tau_0(G)\le\frac{n^3}{54}+\frac{37}{8}\,n^{5/2}.
+\end{equation}
+For $n\ge6$ let $a=\lfloor n/3\rfloor$ and $\ell=n-2a+1$, and let $B_n$ be the barbell consisting of two disjoint copies of $K_a$ whose chosen vertices are joined by a path with $\ell$ edges. Then $B_n$ has $n$ vertices and
+\begin{equation}\label{eq:lower}
+\tau_0(B_n)\ge\tau_2(B_n)\ge\frac{3a(a-1)\ell+\ell^2+2}{6}\ge\frac{(n-2)(n-5)(n+3)}{54}.
+\end{equation}
+\end{theorem}
+
+\begin{corollary}\label{cor:asym}
+As $n\to\infty$,
+\[
+\max_G\tau_0(G)=\frac{n^3}{54}+O(n^{5/2}),\qquad \max_G\tau_2(G)=\frac{n^3}{54}+O(n^{5/2}),
+\]
+the maxima being over connected simple graphs on $n$ vertices, and the barbells $B_n$ attain the leading constant for both quantities.
+\end{corollary}
+
+The constant has a simple explanation, and the proof follows it. In a barbell with cliques of size $a$ and a path of $\ell$ edges, each path edge separates two halves of total degree about $a^2$ each, and the electrical formula~\eqref{eq:resistance} below charges each such edge about $a^2\cdot a^2/(2a^2)=a^2/2$. The total, $a^2\ell/2$ with $2a+\ell\approx n$, is largest at $a=\ell=n/3$, where it equals $n^3/54$. For a general graph we single out the set $S$ of vertices within distance one of a vertex of degree at least $\sqrt n$. Its components have small total diameter, every other vertex has small degree, and after the components are contracted the graph is compared with a tree. A tree edge separates the $s=|S|$ grouped vertices into two parts of sizes $x$ and $y$, and its contribution is at most $x^2y^2/(x^2+y^2)\le s^2/8$, up to a term of order $n^{3/2}$. There are at most $n-s$ such edges, up to lower-order terms, and $(n-s)s^2/8\le n^3/54$.
+
+The theorem leaves open the exact maximiser for each $n$ and the true size of the error term. The best barbell has $\tau_0=n^3/54+O(n^2)$ by~\cite{FKK}, which suggests that the error term in~\eqref{eq:upper} can be reduced to $O(n^2)$.
+
+Section~\ref{sec:prelim} recalls the spectral and electrical formulas for $\tau_0$. Section~\ref{sec:upper} proves the upper bound~\eqref{eq:upper}, Section~\ref{sec:lower} the lower bound~\eqref{eq:lower}, and Section~\ref{sec:numerics} reports a numerical check.
+
+\section{Spectral and electrical formulas}\label{sec:prelim}
+
+Let $L=\operatorname{diag}(d)-A$ be the combinatorial Laplacian of $G$, where $A$ is the adjacency matrix. The matrix $I-P=\operatorname{diag}(d)^{-1}L$ is similar to the symmetric matrix $\operatorname{diag}(d)^{-1/2}L\operatorname{diag}(d)^{-1/2}$, and since $f^{\mathsf T}Lf=\sum_{uv\in E}(f_u-f_v)^2$ and $G$ is connected, its eigenvalue $0$ is simple. The variational characterisation gives
+\begin{equation}\label{eq:rayleigh}
+\mu_2=\min\Bigl\{\frac{\sum_{uv\in E}(f_u-f_v)^2}{\sum_v d_vf_v^2}:\ f\ne0,\ \sum_v d_vf_v=0\Bigr\}.
+\end{equation}
+
+\begin{lemma}\label{lem:formulas}
+For the simple random walk on a connected graph,
+\begin{equation}\label{eq:eigentime}
+\tau_0=\sum_{i=2}^n\frac1{\mu_i},
+\end{equation}
+and in particular $\tau_2\le\tau_0$. Moreover
+\begin{equation}\label{eq:resistance}
+\tau_0=\frac1W\sum_{\{u,v\}\subset V}d_ud_vR_{uv},
+\end{equation}
+where the sum is over unordered pairs of distinct vertices and $R_{uv}$ is the effective resistance between $u$ and $v$ when every edge has unit resistance. Finally $R_{uv}\le\dist_G(u,v)$.
+\end{lemma}
+
+\begin{proof}
+Identity~\eqref{eq:eigentime} is the eigentime identity~\cite[Chapter~3]{AF}; it also follows from the fundamental matrix $Z=(I-P+\mathbf 1\pi^{\mathsf T})^{-1}$, which has eigenvalues $1$ and $1/\mu_i$ ($i\ge2$) and satisfies $E_u[T_v]=(Z_{vv}-Z_{uv})/\pi_v$~\cite{KS}, so that $\tau_0=\tr Z-\sum_vZ_{uv}=\tr Z-1$. Since every term of~\eqref{eq:eigentime} is positive, $\tau_2=1/\mu_2\le\tau_0$.
+
+For~\eqref{eq:resistance}, average the definition of $\tau_0$ over the starting vertex $u$ with respect to $\pi$:
+\[
+\tau_0=\sum_{u,v}\pi_u\pi_vE_u[T_v]=\frac12\sum_{u,v}\pi_u\pi_v\bigl(E_u[T_v]+E_v[T_u]\bigr).
+\]
+By the commute time identity~\cite{CRRST}, $E_u[T_v]+E_v[T_u]=WR_{uv}$. Hence $\tau_0=\frac W2\sum_{u,v}\pi_u\pi_vR_{uv}=\frac1{2W}\sum_{u,v}d_ud_vR_{uv}$, which is~\eqref{eq:resistance}.
+
+By Thomson's principle, $R_{uv}$ is the minimum energy $\sum_{e}j_e^2$ of a unit flow $j$ from $u$ to $v$. The unit flow along a shortest path from $u$ to $v$ has energy $\dist_G(u,v)$, so $R_{uv}\le\dist_G(u,v)$.
+\end{proof}
+
+\section{The upper bound}\label{sec:upper}
+
+Throughout this section $G$ is a connected simple graph on $n$ vertices and $D>0$ is a threshold. Let
+\[
+H=\{v\in V:d_v\ge D\},\qquad S=\bigcup_{h\in H}N[h],
+\]
+where $N[h]$ is the closed neighbourhood of $h$. Let $C_1,\dots,C_k$ be the vertex sets of the components of the induced graph $G[S]$, let $s_i=|C_i|$, $s=|S|=\sum_is_i$, and let $\delta_i$ be the diameter of the induced graph $G[C_i]$. Put $\delta=\sum_i\delta_i$. If $H$ is empty, then $S$ is empty and $s=k=\delta=0$.
+
+\begin{lemma}\label{lem:components}
+We have $k\le s/D$ and $\delta\le5s/D$.
+\end{lemma}
+
+\begin{proof}
+Each $C_i$ contains a vertex $h\in H$ together with all of $N[h]$, because $N[h]\subset S$ is connected. Hence $s_i\ge|N[h]|>D$ and $k\le s/D$.
+
+Fix $i$ and a shortest path $v_0,v_1,\dots,v_{\delta_i}$ in $G[C_i]$. For each index $j\in\{0,5,10,\dots\}$ with $j\le\delta_i$, choose $h_j\in H$ with $v_j\in N[h_j]$; such a vertex exists because $v_j\in S$, and then $N[h_j]\subset C_i$. If $N[h_j]$ and $N[h_m]$ met for two distinct selected indices $j<m$, the walk from $v_j$ through $h_j$, a common vertex of the two neighbourhoods and $h_m$ to $v_m$ would have length at most four and would stay in $C_i$, while $\dist_{G[C_i]}(v_j,v_m)=m-j\ge5$. So the sets $N[h_j]$ are pairwise disjoint subsets of $C_i$, each with more than $D$ elements, and
+\[
+\Bigl(\Bigl\lfloor\frac{\delta_i}5\Bigr\rfloor+1\Bigr)D\le s_i .
+\]
+Since $\delta_i/5<\lfloor\delta_i/5\rfloor+1$, this gives $\delta_i\le5s_i/D$. Summing over $i$ gives $\delta\le5s/D$.
+\end{proof}
+
+Contract each $C_i$ to a single vertex and keep every vertex outside $S$. The resulting graph $Q$ is connected and has $k+(n-s)$ vertices; let $q:V\to V(Q)$ be the quotient map. Fix a spanning tree $T$ of $Q$. It has
+\begin{equation}\label{eq:edges}
+|E(T)|=k+n-s-1\le n-s+\frac sD
+\end{equation}
+edges, and also $|E(T)|\le n-1$. For a vertex $x$ of $Q$ let $w_x=\sum_{v\in q^{-1}(x)}d_v$, so that $\sum_xw_x=W$. For an edge $e$ of $T$, let $W_L(e)$ and $W_R(e)$ be the sums of $w_x$ over the two components of $T-e$.
+
+\begin{lemma}\label{lem:tree}
+We have
+\[
+\tau_0\le\frac1W\sum_{e\in E(T)}W_L(e)W_R(e)+\frac{W\delta}2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $u,v\in V$ and let $x_0=q(u),x_1,\dots,x_m=q(v)$ be the path from $q(u)$ to $q(v)$ in $T$. Each edge $x_{r-1}x_r$ of $T$ comes from an edge of $G$ between the parts $q^{-1}(x_{r-1})$ and $q^{-1}(x_r)$. Joining these $m$ edges by paths inside the contracted components, and adding a path inside the component of $u$ (or of $v$) when $u$ (or $v$) lies in $S$, gives a walk from $u$ to $v$ in $G$. The tree path visits each contracted component at most once, and inside $C_i$ the walk uses a path of length at most $\delta_i$. Therefore
+\[
+\dist_G(u,v)\le\dist_T(q(u),q(v))+\delta .
+\]
+By Lemma~\ref{lem:formulas},
+\[
+\tau_0\le\frac1W\sum_{\{u,v\}}d_ud_v\dist_T(q(u),q(v))+\frac\delta W\sum_{\{u,v\}}d_ud_v .
+\]
+The second term is at most $\delta W^2/(2W)=W\delta/2$. In the first, pairs inside one part contribute nothing, and grouping the rest by parts gives $\sum_{\{x,y\}}w_xw_y\dist_T(x,y)$. An edge $e$ of $T$ lies on the tree path between $x$ and $y$ exactly when it separates them, so this sum equals $\sum_eW_L(e)W_R(e)$.
+\end{proof}
+
+\begin{lemma}\label{lem:cut}
+Every edge $e$ of $T$ satisfies
+\[
+\frac{W_L(e)W_R(e)}W\le\frac{s^2}8+2nD .
+\]
+\end{lemma}
+
+\begin{proof}
+For the vertex of $Q$ obtained from $C_i$ put $a_x=2|E(G[C_i])|$, and for a vertex $x\notin S$ put $a_x=0$. Let $b_x=w_x-a_x\ge0$, $A=\sum_xa_x$ and $B=\sum_xb_x$, so that $W=A+B$. Two different components $C_i,C_j$ are not joined by an edge of $G$, so every edge of $G$ that does not lie inside one of the sets $C_i$ has an endpoint outside $S$. The number $B$ counts the endpoints of such edges, and therefore
+\[
+B\le2\sum_{v\notin S}d_v<2nD,
+\]
+because every vertex outside $S$ is outside $H$.
+
+Fix $e$ and write $A_L,b_L$ and $A_R,b_R$ for the sums of $a_x$ and $b_x$ on the two sides, so that $W_L=A_L+b_L$ and $W_R=A_R+b_R$. Then
+\[
+W_LW_R=A_LA_R+\bigl(A_Lb_R+A_Rb_L+b_Lb_R\bigr)\le A_LA_R+AB+B^2=A_LA_R+BW .
+\]
+If $A=0$ then $A_LA_R=0$ and the claim follows. Otherwise $W\ge A$ gives
+\[
+\frac{W_LW_R}W\le\frac{A_LA_R}{A_L+A_R}+B .
+\]
+Let $x$ and $y$ be the numbers of vertices of $S$ on the two sides of $e$, so $x+y=s$. A simple graph on $s_i$ vertices has fewer than $s_i^2$ edge endpoints, hence $A_L\le\sum s_i^2\le x^2$, the sum being over the components on the left, and likewise $A_R\le y^2$. The function $(p,q)\mapsto pq/(p+q)$ is increasing in each variable on $p,q\ge0$ (read as $0$ when $p+q=0$), so
+\[
+\frac{A_LA_R}{A_L+A_R}\le\frac{x^2y^2}{x^2+y^2}\le\frac{s^2}8 ,
+\]
+where the last inequality is $(x+y)^2(x^2+y^2)-8x^2y^2=(x-y)^2(x^2+4xy+y^2)\ge0$.
+\end{proof}
+
+\begin{proof}[Proof of the upper bound~\eqref{eq:upper}]
+The inequality $\tau_2\le\tau_0$ is in Lemma~\ref{lem:formulas}. By Lemmas~\ref{lem:tree}, \ref{lem:cut} and~\ref{lem:components}, together with~\eqref{eq:edges} and $|E(T)|\le n-1$,
+\[
+\tau_0\le\Bigl(n-s+\frac sD\Bigr)\frac{s^2}8+(n-1)\cdot2nD+\frac{5Ws}{2D}.
+\]
+Since $s\le n$ and $W\le n^2$, the right side is at most
+\[
+\frac{(n-s)s^2}8+\frac{n^3}{8D}+2n^2D+\frac{5n^3}{2D}=\frac{(n-s)s^2}8+\frac{21}8\cdot\frac{n^3}D+2n^2D .
+\]
+On $0\le s\le n$ the function $(n-s)s^2$ has its maximum $4n^3/27$ at $s=2n/3$, so $(n-s)s^2/8\le n^3/54$. Taking $D=\sqrt n$ gives
+\[
+\tau_0\le\frac{n^3}{54}+\frac{21}8n^{5/2}+2n^{5/2}=\frac{n^3}{54}+\frac{37}8n^{5/2}.\qedhere
+\]
+\end{proof}
+
+\begin{remark}
+The maximum of $(n-s)s^2$ at $s=2n/3$ matches the barbell: two cliques on $n/3$ vertices each make up the set $S$, and the path, with about $n/3$ edges, is the tree outside it. The proof bounds every tree edge as if it were the middle edge of the path; for the barbell this costs nothing, because every path edge has the two cliques on opposite sides.
+\end{remark}
+
+\section{The lower bound}\label{sec:lower}
+
+Let $a\ge2$ and $\ell\ge1$, and let $B(a,\ell)$ be the graph formed by two disjoint copies of $K_a$ and a path with $\ell$ edges joining a vertex $p_0$ of the first copy to a vertex $p_\ell$ of the second, through $\ell-1$ new vertices $p_1,\dots,p_{\ell-1}$. It has $2a+\ell-1$ vertices.
+
+\begin{proposition}\label{prop:barbell}
+$\displaystyle\tau_2(B(a,\ell))\ge\frac{3a(a-1)\ell+\ell^2+2}6$.
+\end{proposition}
+
+\begin{proof}
+Define $f=-1$ on the first clique, $f=1$ on the second, and $f(p_j)=-1+2j/\ell$ for $0\le j\le\ell$; the two definitions agree at $p_0$ and $p_\ell$. The reflection of $B(a,\ell)$ that exchanges the cliques and maps $p_j$ to $p_{\ell-j}$ preserves degrees and changes the sign of $f$, so $\sum_vd_vf_v=0$, and~\eqref{eq:rayleigh} gives
+\[
+\tau_2=\frac1{\mu_2}\ge\frac{\sum_vd_vf_v^2}{\sum_{uv\in E}(f_u-f_v)^2}.
+\]
+Only the $\ell$ path edges contribute to the denominator, each with $(2/\ell)^2$, so the denominator equals $4/\ell$. In the numerator, each clique has total degree $a(a-1)+1$ and $f^2=1$ on it, and the $\ell-1$ inner path vertices have degree $2$, so the numerator equals
+\[
+2a(a-1)+2+2\sum_{j=1}^{\ell-1}\Bigl(1-\frac{2j}\ell\Bigr)^2=2a(a-1)+2+\frac{2(\ell-1)(\ell-2)}{3\ell}=2a(a-1)+\frac{2\ell}3+\frac4{3\ell},
+\]
+using $\sum_{j=1}^{\ell-1}(1-2j/\ell)^2=(\ell-1)-2(\ell-1)+\tfrac{2(\ell-1)(2\ell-1)}{3\ell}=\tfrac{(\ell-1)(\ell-2)}{3\ell}$. Multiplying by $\ell/4$ gives the claim.
+\end{proof}
+
+\begin{proof}[Proof of the lower bound~\eqref{eq:lower}]
+For $n\ge6$, $a=\lfloor n/3\rfloor\ge2$ and $\ell=n-2a+1\ge n/3+1$, and $B_n=B(a,\ell)$ has $2a+\ell-1=n$ vertices. The first inequality in~\eqref{eq:lower} is Lemma~\ref{lem:formulas} and the second is Proposition~\ref{prop:barbell}. For the third, $a\ge(n-2)/3$ gives $a(a-1)\ge(n-2)(n-5)/9$, and $\ell\ge(n+3)/3$, so
+\[
+\frac{3a(a-1)\ell+\ell^2+2}6\ge\frac{a(a-1)\ell}2\ge\frac{(n-2)(n-5)(n+3)}{54}.\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:asym}]
+For $n\ge6$, Theorem~\ref{thm:main} gives
+\[
+\frac{(n-2)(n-5)(n+3)}{54}\le\tau_2(B_n)\le\max_G\tau_2(G)\le\max_G\tau_0(G)\le\frac{n^3}{54}+\frac{37}8n^{5/2},
+\]
+and $\tau_0(B_n)$ lies between the same bounds. The two outer terms are $n^3/54+O(n^{5/2})$.
+\end{proof}
+
+\section{A numerical check}\label{sec:numerics}
+
+The script in the repository listed under Data availability computes three things. First, it computes Kemeny's constant of small barbells exactly, as $\tr Z-1$ in rational arithmetic, and compares it with~\eqref{eq:eigentime} and~\eqref{eq:resistance} evaluated in floating point; for example $\tau_0(B(3,2))=293/24$ and $\tau_0(B(6,7))=31363/222$. Second, for the barbells $B_n$ it compares the bound of Proposition~\ref{prop:barbell} with $\tau_2$ and $\tau_0$ computed from the spectrum. Table~\ref{tab:barbell} shows the ratios to $n^3$, which approach $1/54\approx0.018519$ from above. Third, on $400$ random connected graphs with $8$ to $46$ vertices (Erd\H{o}s--R\'enyi graphs, random trees, chains of cliques and lollipops with extra edges) and the thresholds $D=2,3,\sqrt n,n/4,n/2$, it checks every inequality of Section~\ref{sec:upper}: Lemma~\ref{lem:components}, the bound $B<2nD$, Lemma~\ref{lem:cut} for each edge of a breadth-first spanning tree of the quotient, Lemma~\ref{lem:tree}, the bound $R_{uv}\le\dist_T(q(u),q(v))+\delta$, and~\eqref{eq:upper}. All of them hold.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrccc}
+\toprule
+$n$ & $a$ & $\ell$ & Proposition~\ref{prop:barbell}$/n^3$ & $\tau_2(B_n)/n^3$ & $\tau_0(B_n)/n^3$\\
+\midrule
+30 & 10 & 11 & 0.019093 & 0.019387 & 0.021426\\
+90 & 30 & 31 & 0.018718 & 0.018757 & 0.019266\\
+300 & 100 & 101 & 0.018580 & 0.018583 & 0.018716\\
+600 & 200 & 201 & 0.018549 & 0.018550 & 0.018614\\
+\bottomrule
+\end{tabular}
+\caption{Balanced barbells $B_n$.}\label{tab:barbell}
+\end{table}
+
+\section*{Acknowledgements and funding}
+The research presented in this paper was supported by the European Research
+Council (ERC) under the European Union's Horizon Europe research and
+innovation programme (grant agreement No.~101041711), by the Simons
+Foundation as part of the Collaboration on the Mathematical and Scientific
+Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by
+the Israel Science Foundation (grant number 2258/19), and by the Israel
+Science Foundation (ISF Grant 4101/25). Computational resources were
+provided in part by Google Cloud through its education credits program
+(credit 530550103).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and
+has a management role at Convex Nexus Capital. These entities are included
+in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In September and October 2026 a GPT-family model (OpenAI), running in the Codex command-line tool, found the proof of Theorem~\ref{thm:main}; other model instances checked it. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, checked the proof, wrote and ran the computations of Section~\ref{sec:numerics}, and wrote the paper. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Data availability}
+No data were used. The code for the computations of Section~\ref{sec:numerics}, with its output, is available at\\ \url{https://github.com/yspennstate/largest-kemeny-constant}.
+
+\begin{thebibliography}{9}
+
+\bibitem{AF}
+D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled 2014; available at \url{https://www.stat.berkeley.edu/~aldous/RWG/book.html}.
+
+\bibitem{BBD}
+J.~Breen, S.~Butler, N.~Day, C.~DeArmond, K.~Lorenzen, H.~Qian and J.~Riesen, Computing Kemeny's constant for a barbell graph, \emph{Electron. J. Linear Algebra} \textbf{35} (2019), 583--598; doi:10.13001/1081-3810.4095.
+
+\bibitem{BW}
+G.~Brightwell and P.~Winkler, Maximum hitting time for random walks on graphs, \emph{Random Structures Algorithms} \textbf{1} (1990), 263--276.
+
+\bibitem{CRRST}
+A.~K.~Chandra, P.~Raghavan, W.~L.~Ruzzo, R.~Smolensky and P.~Tiwari, The electrical resistance of a graph captures its commute and cover times, \emph{Comput. Complexity} \textbf{6} (1996/97), 312--340.
+
+\bibitem{FKK}
+N.~Faught, M.~Kempton and A.~Knudson, A 1-separation formula for the graph Kemeny constant and Braess edges, \emph{J. Math. Chem.}, doi:10.1007/s10910-021-01294-8; arXiv:2108.01061.
+
+\bibitem{Fe}
+U.~Feige, A tight upper bound on the cover time for random walks on graphs, \emph{Random Structures Algorithms} \textbf{6} (1995), 51--54.
+
+\bibitem{KS}
+J.~G.~Kemeny and J.~L.~Snell, \emph{Finite Markov Chains}, Van Nostrand, Princeton, 1960.
+
+\end{thebibliography}
+\end{document}
