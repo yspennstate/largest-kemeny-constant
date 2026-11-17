@@ -31,7 +31,7 @@
 
 \begin{document}
 \begin{abstract}
-For the simple random walk on a connected graph with $n$ vertices, let $\tau_0$ be Kemeny's constant and $\tau_2$ the relaxation time. Aldous and Fill conjectured that the maxima of both quantities over all connected $n$-vertex graphs are asymptotic to $n^3/54$. We prove this. Every connected graph on $n$ vertices satisfies $\tau_2\le\tau_0\le n^3/54+\tfrac{37}{8}n^{5/2}$, and the barbell made of two cliques on about $n/3$ vertices joined by a path on about $n/3$ vertices has $\tau_2\ge(n-2)(n-5)(n+3)/54$. The upper bound comes from the electrical formula for Kemeny's constant: the vertices near high-degree vertices are grouped into components of small total diameter, the rest of the graph is compared with a tree, and each edge of the tree is shown to contribute at most $s^2/8$ plus a lower-order term, where $s$ is the number of grouped vertices.
+For the simple random walk on a connected graph with $n$ vertices, let $\tau_0$ be Kemeny's constant and $\tau_2$ the relaxation time. Aldous and Fill conjectured that the maxima of both quantities over all connected $n$-vertex graphs are asymptotic to $n^3/54$. The assertion for $\tau_2$ was proved by Aksoy, Chung, Tait and Tobin. We prove the assertion for $\tau_0$. Every connected graph on $n$ vertices satisfies $\tau_2\le\tau_0\le n^3/54+\tfrac{37}{8}n^{5/2}$, and the barbell made of two cliques on about $n/3$ vertices joined by a path on about $n/3$ vertices has $\tau_2\ge(n-2)(n-5)(n+3)/54$. The upper bound comes from the electrical formula for Kemeny's constant: the vertices near high-degree vertices are grouped into components of small total diameter, the rest of the graph is compared with a tree, and each edge of the tree is shown to contribute at most $s^2/8$ plus a lower-order term, where $s$ is the number of grouped vertices.
 \end{abstract}
 \maketitle
 
@@ -51,7 +51,7 @@ Among the extremal questions collected by Aldous and Fill, the largest hitting t
 \[
 \max_G\tau_0(G)\sim\frac{n^3}{54}\quad\text{and}\quad\max_G\tau_2(G)\sim\frac{n^3}{54},
 \]
-the maxima being over connected graphs with $n$ vertices. Breen, Butler, Day, DeArmond, Lorenzen, Qian and Riesen~\cite{BBD} computed Kemeny's constant of barbell-type graphs and showed that it is of order $n^3$, the largest possible order. Faught, Kempton and Knudson~\cite{FKK} obtained Kemeny's constant of a barbell from a formula for graphs with a cut vertex and showed that the best barbell has cliques on about $n/3$ vertices each and Kemeny's constant $n^3/54+O(n^2)$; they note that barbells are believed, on the basis of computation, to maximise Kemeny's constant. The matching upper bound is the content of the present paper.
+the maxima being over connected graphs with $n$ vertices. Aksoy, Chung, Tait and Tobin~\cite{ACTT} proved the second assertion. Their theorem gives no upper bound for $\tau_0$, since the inequality $\tau_2\le\tau_0$ runs the other way. Breen, Butler, Day, DeArmond, Lorenzen, Qian and Riesen~\cite{BBD} computed Kemeny's constant of barbell-type graphs and showed that it is of order $n^3$, the largest possible order. Faught, Kempton and Knudson~\cite{FKK} obtained Kemeny's constant of a barbell from a formula for graphs with a cut vertex and showed that the best barbell has cliques on about $n/3$ vertices each and Kemeny's constant $n^3/54+O(n^2)$; they note that barbells are believed, on the basis of computation, to maximise Kemeny's constant. The matching upper bound for $\tau_0$ is the content of the present paper.
 
 \begin{theorem}\label{thm:main}
 Let $G$ be a connected simple graph on $n\ge2$ vertices. Then
@@ -284,7 +284,10 @@ No data were used. The code for the computations of Section~\ref{sec:numerics}, 
 
 The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
+
+\bibitem{ACTT}
+S.~G.~Aksoy, F.~Chung, M.~Tait and J.~Tobin, \emph{The maximum relaxation time of a random walk}, Adv. in Appl. Math. \textbf{101} (2018), 1--14. \href{https://doi.org/10.1016/j.aam.2018.07.002}{doi:10.1016/j.aam.2018.07.002}.
 
 \bibitem{AF}
 D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled 2014; available at \url{https://www.stat.berkeley.edu/~aldous/RWG/book.html}.

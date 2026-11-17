@@ -7,7 +7,8 @@ Paper: [paper/main.pdf](paper/main.pdf) (source [paper/main.tex](paper/main.tex)
 For the simple random walk on a connected graph with $n$ vertices, let $\tau_0$ be Kemeny's constant and
 $\tau_2=1/\mu_2$ the relaxation time (rate-one walk, $\mu_2$ the spectral gap of $I-P$). Aldous and Fill
 (Reversible Markov Chains and Random Walks on Graphs, Open Problem 6.13) conjectured that the maxima of both
-quantities over connected $n$-vertex graphs are asymptotic to $n^3/54$. The paper proves this:
+quantities over connected $n$-vertex graphs are asymptotic to $n^3/54$. The assertion for $\tau_2$ was proved by
+Aksoy, Chung, Tait and Tobin (Adv. Appl. Math. 101 (2018), 1-14). The paper proves the assertion for $\tau_0$:
 
 - every connected graph on $n$ vertices has $\tau_2\le\tau_0\le n^3/54+\tfrac{37}{8}n^{5/2}$;
 - the barbell made of two copies of $K_a$, $a=\lfloor n/3\rfloor$, joined by a path with $n-2a+1$ edges has
